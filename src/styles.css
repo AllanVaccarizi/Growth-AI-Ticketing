@@ -1,0 +1,427 @@
+/* styles.css - CSS complet pour l'application de ticketing N8N */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: #000000;
+  color: white;
+  line-height: 1.6;
+}
+
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effets de fond avec dégradés */
+.bg-effects {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gradient-blob-1 {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 384px;
+  height: 384px;
+  background: radial-gradient(circle, rgba(244, 183, 0, 0.2) 0%, rgba(255, 165, 0, 0.1) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.gradient-blob-2 {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(244, 183, 0, 0.15) 0%, rgba(255, 193, 7, 0.05) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.gradient-blob-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 288px;
+  height: 288px;
+  background: radial-gradient(circle, rgba(244, 183, 0, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Container principal */
+.main-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Page de connexion */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 448px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 24px;
+}
+
+.main-title {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f4b700, #fff3cd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+/* Carte glassmorphism */
+.glass-card {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Formulaires */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #d1d5db;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #f4b700;
+  box-shadow: 0 0 0 3px rgba(244, 183, 0, 0.2);
+}
+
+.form-input:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.form-input::placeholder {
+  color: #6b7280;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  resize: none;
+  min-height: 144px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #f4b700;
+  box-shadow: 0 0 0 3px rgba(244, 183, 0, 0.2);
+}
+
+/* Boutons */
+.btn-primary {
+  width: 100%;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #f4b700, #ffcd3c);
+  color: black;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px -5px rgba(244, 183, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #ffcd3c, #ffe066);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(244, 183, 0, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #9ca3af;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Header de l'application */
+.app-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-logo {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-info h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f4b700;
+}
+
+.header-info p {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* Contenu principal */
+.main-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f4b700, #fff3cd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+
+.section-description {
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+/* Grille de formulaire */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-grid-full {
+  grid-column: 1 / -1;
+}
+
+/* Page de succès */
+.success-container {
+  text-align: center;
+  padding: 64px 0;
+}
+
+.success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  border-radius: 50%;
+  margin-bottom: 24px;
+  animation: success-pulse 2s ease-in-out infinite;
+}
+
+@keyframes success-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.success-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 16px;
+}
+
+.success-description {
+  color: #9ca3af;
+}
+
+/* Info démonstration */
+.demo-info {
+  margin-top: 24px;
+  padding: 16px;
+  background: rgba(244, 183, 0, 0.1);
+  border: 1px solid rgba(244, 183, 0, 0.2);
+  border-radius: 12px;
+}
+
+.demo-text {
+  font-size: 12px;
+  color: #fff3cd;
+  text-align: center;
+}
+
+/* Spinner de chargement */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top: 2px solid black;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-header {
+    margin-bottom: 32px;
+  }
+  
+  .main-title {
+    font-size: 28px;
+  }
+  
+  .glass-card {
+    padding: 24px;
+  }
+  
+  .main-container {
+    padding: 32px 16px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
