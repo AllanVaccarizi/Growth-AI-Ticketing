@@ -58,6 +58,7 @@ const CheckCircle = ({ size = 48 }) => (
 );
 
 const TicketingApp = () => {
+  const [currentClientEmail, setCurrentClientEmail] = useState(''); // ← Nouvelle ligne
   const [loginAttempts, setLoginAttempts] = useState(0);
   const [isBlocked, setIsBlocked] = useState(false);
   const [blockTime, setBlockTime] = useState(null);
@@ -86,7 +87,7 @@ const TicketingApp = () => {
   try {
     const { data, error } = await supabase
       .from('growth_ai_ticketing_clients')
-      .select('id, username, company_name, password')
+      .select('id, username, company_name, password, email')
       .eq('username', loginData.username)
       .single();
 
@@ -102,6 +103,7 @@ const TicketingApp = () => {
         setCurrentUser(data.company_name);
         setCurrentClientId(data.id);
         setTicketData(prev => ({ ...prev, clientName: data.company_name }));
+        setCurrentClientEmail(data.email);
       } else {
         throw new Error('Mot de passe incorrect');
       }
@@ -170,6 +172,7 @@ const TicketingApp = () => {
       const webhookData = {
         client_name: currentUser,
         client_id: currentClientId,
+        client_email: currentClientEmail,
         workflow_name: ticketData.workflow,
         node_name: ticketData.node || null,
         description: ticketData.description,
@@ -211,6 +214,7 @@ const TicketingApp = () => {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentUser('');
+    setCurrentClientEmail('');
     setLoginData({ username: '', password: '' });
     setTicketData({ clientName: '', workflow: '', node: '', description: '' });
   };
