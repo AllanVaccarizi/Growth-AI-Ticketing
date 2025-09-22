@@ -104,7 +104,6 @@ const TicketingApp = () => {
         setCurrentClientId(data.id);
         setTicketData(prev => ({ ...prev, clientName: data.company_name }));
         setCurrentClientEmail(data.email);
-        console.log('Email récupéré:', data.email);
       } else {
         throw new Error('Mot de passe incorrect');
       }
@@ -136,7 +135,6 @@ const TicketingApp = () => {
   };
 
   const handleTicketSubmit = async () => {
-    console.log('Email du client:', currentClientEmail);
     // Validations renforcées
     if (!ticketData.workflow || ticketData.workflow.trim().length < 2) {
       alert('Le nom du workflow doit contenir au moins 2 caractères');
